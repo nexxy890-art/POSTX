@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050509">
+  <title>POSTX — Create Once • Post Everywhere</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- INTRO -->
+  <div id="intro" class="intro">
+    <div class="intro-orb"></div>
+    <div class="intro-content">
+      <div class="intro-logo">POST<span>X</span></div>
+      <div class="intro-line">CREATE ONCE</div>
+      <div class="intro-line">POST EVERYWHERE</div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <!-- APP -->
+  <div id="app" class="app">
+
+    <!-- HEADER -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <div class="brand-name">POSTX</div>
+          <div class="brand-tag">CREATE ONCE • POST EVERYWHERE</div>
+        </div>
+      </div>
+
+      <div class="top-status">
+        <span class="online-dot"></span>
+        <span>ONLINE</span>
+        <b>V2.3</b>
+      </div>
+
+      <button class="icon-btn" id="settingsBtn" aria-label="Settings">
+        ⚙
+      </button>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-glow"></div>
+
+      <div class="hero-content">
+        <div class="eyebrow">CREATOR CONTROL CENTER</div>
+
+        <h1>
+          One Video.
+          <span>Everywhere.</span>
+        </h1>
+
+        <p>
+          Upload your content once and prepare it for every connected
+          platform from one place.
+        </p>
+
+        <div class="hero-pills">
+          <span>⚡ FAST</span>
+          <span>🔒 SECURE</span>
+          <span>☁ PERSISTENT</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONNECTED PLATFORMS -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="section-label">01 / ACCOUNTS</div>
+          <h2>Connected Platforms</h2>
+        </div>
+
+        <button class="small-btn" id="manageAccountsBtn">
+          MANAGE
+        </button>
+      </div>
+
+      <div class="platform-grid">
+
+        <button class="platform-card selected" data-platform="youtube">
+          <div class="platform-icon youtube">▶</div>
+          <div class="platform-info">
+            <strong>YouTube</strong>
+            <small id="youtubeAccount">Not connected</small>
+          </div>
+          <span class="platform-check">✓</span>
+        </button>
+
+        <button class="platform-card selected" data-platform="tiktok">
+          <div class="platform-icon tiktok">♪</div>
+          <div class="platform-info">
+            <strong>TikTok</strong>
+            <small id="tiktokAccount">Not connected</small>
+          </div>
+          <span class="platform-check">✓</span>
+        </button>
+
+        <button class="platform-card selected" data-platform="instagram">
+          <div class="platform-icon instagram">◎</div>
+          <div class="platform-info">
+            <strong>Instagram</strong>
+            <small id="instagramAccount">Not connected</small>
+          </div>
+          <span class="platform-check">✓</span>
+        </button>
+
+        <button class="platform-card selected" data-platform="facebook">
+          <div class="platform-icon facebook">f</div>
+          <div class="platform-info">
+            <strong>Facebook</strong>
+            <small id="facebookAccount">Not connected</small>
+          </div>
+          <span class="platform-check">✓</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- COMPOSER -->
+    <section class="section composer-section">
+
+      <div class="section-head">
+        <div>
+          <div class="section-label">02 / CREATE</div>
+          <h2>New Post</h2>
+        </div>
+
+        <div class="draft-status" id="draftStatus">
+          DRAFT SAVED
+        </div>
+      </div>
+
+      <div class="composer-grid">
+
+        <!-- VIDEO -->
+        <div class="glass-card video-card">
+
+          <div class="card-title">
+            <span>VIDEO</span>
+            <span class="required">REQUIRED</span>
+          </div>
+
+          <input
+            type="file"
+            id="videoInput"
+            accept="video/*"
+            hidden
+          >
+
+          <div id="dropZone" class="drop-zone">
+
+            <div id="uploadPlaceholder">
+              <div class="upload-icon">↑</div>
+
+              <h3>Drop your video here</h3>
+
+              <p>
+                or choose a video from your device
+              </p>
+
+              <button
+                type="button"
+                class="primary-mini"
+                id="chooseVideoBtn"
+              >
+                CHOOSE VIDEO
+              </button>
+
+              <small>
+                MP4 • MOV • WEBM
+              </small>
+            </div>
+
+            <div id="videoPreviewBox" class="video-preview-box hidden">
+
+              <video
+                id="videoPreview"
+                controls
+                playsinline
+              ></video>
+
+              <div class="video-meta">
+                <div>
+                  <strong id="videoName">video.mp4</strong>
+                  <small id="videoSize">0 MB</small>
+                </div>
+
+                <button
+                  type="button"
+                  class="remove-btn"
+                  id="removeVideoBtn"
+                >
+                  REMOVE
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="upload-info">
+            <span id="fileInfo">No video selected</span>
+            <span id="fileDuration">—</span>
+          </div>
+
+        </div>
+
+        <!-- DETAILS -->
+        <div class="glass-card details-card">
+
+          <div class="card-title">
+            <span>POST DETAILS</span>
+            <span class="optional">OPTIONAL</span>
+          </div>
+
+          <label>
+            Caption
+            <textarea
+              id="captionInput"
+              maxlength="2200"
+              placeholder="Write your caption..."
+            ></textarea>
+          </label>
+
+          <div class="caption-bottom">
+            <label class="toggle-row">
+              <input
+                type="checkbox"
+                id="sameCaption"
+                checked
+              >
+              <span class="toggle"></span>
+              Same caption everywhere
+            </label>
+
+            <span id="captionCount">0 / 2200</span>
+          </div>
+
+          <label class="thumbnail-label">
+            Thumbnail / Cover
+
+            <div class="thumbnail-box" id="thumbnailBox">
+
+              <input
+                type="file"
+                id="thumbnailInput"
+                accept="image/*"
+                hidden
+              >
+
+              <div id="thumbnailPlaceholder">
+                <span>＋</span>
+                <small>Choose cover</small>
+              </div>
+
+              <img
+                id="thumbnailPreview"
+                class="hidden"
+                alt="Thumbnail preview"
+              >
+
+            </div>
+          </label>
+
+        </div>
+
+      </div>
+
+      <!-- POST BUTTON -->
+      <div class="post-action">
+
+        <div class="post-summary">
+          <span class="summary-dot"></span>
+          <span id="selectedCount">4 platforms selected</span>
+        </div>
+
+        <button
+          id="postEverywhereBtn"
+          class="post-btn"
+          disabled
+        >
+          <span>POST EVERYWHERE</span>
+          <span class="arrow">→</span>
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- UPLOAD CENTER -->
+    <section class="section">
+
+      <div class="section-head">
+        <div>
+          <div class="section-label">03 / LIVE</div>
+          <h2>Upload Center</h2>
+        </div>
+
+        <div class="network-info">
+          <span class="network-dot"></span>
+          <span id="networkSpeed">Network ready</span>
+        </div>
+      </div>
+
+      <div class="upload-dashboard">
+
+        <div class="upload-summary">
+
+          <div class="metric">
+            <small>TOTAL</small>
+            <strong id="totalSize">0 MB</strong>
+          </div>
+
+          <div class="metric">
+            <small>UPLOADED</small>
+            <strong id="uploadedSize">0 MB</strong>
+          </div>
+
+          <div class="metric">
+            <small>ETA</small>
+            <strong id="uploadEta">—</strong>
+          </div>
+
+          <div class="metric">
+            <small>STATUS</small>
+            <strong id="overallStatus">READY</strong>
+          </div>
+
+        </div>
+
+        <div class="upload-list" id="uploadList">
+
+          <!-- YOUTUBE -->
+          <div class="upload-row" data-upload-platform="youtube">
+
+            <div class="upload-platform">
+              <div class="platform-icon youtube">▶</div>
+              <div>
+                <strong>YouTube</strong>
+                <small>Waiting</small>
+              </div>
+            </div>
+
+            <div class="progress-area">
+              <div class="progress-top">
+                <span class="upload-percent">0%</span>
+                <span class="upload-speed">—</span>
+              </div>
+
+              <div class="progress-track">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+
+            <div class="upload-state waiting">
+              WAITING
+            </div>
+
+            <button class="retry-btn hidden">RETRY</button>
+
+          </div>
+
+          <!-- TIKTOK -->
+          <div class="upload-row" data-upload-platform="tiktok">
+
+            <div class="upload-platform">
+              <div class="platform-icon tiktok">♪</div>
+              <div>
+                <strong>TikTok</strong>
+                <small>Waiting</small>
+              </div>
+            </div>
+
+            <div class="progress-area">
+              <div class="progress-top">
+                <span class="upload-percent">0%</span>
+                <span class="upload-speed">—</span>
+              </div>
+
+              <div class="progress-track">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+
+            <div class="upload-state waiting">
+              WAITING
+            </div>
+
+            <button class="retry-btn hidden">RETRY</button>
+
+          </div>
+
+          <!-- INSTAGRAM -->
+          <div class="upload-row" data-upload-platform="instagram">
+
+            <div class="upload-platform">
+              <div class="platform-icon instagram">◎</div>
+              <div>
+                <strong>Instagram</strong>
+                <small>Waiting</small>
+              </div>
+            </div>
+
+            <div class="progress-area">
+              <div class="progress-top">
+                <span class="upload-percent">0%</span>
+                <span class="upload-speed">—</span>
+              </div>
+
+              <div class="progress-track">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+
+            <div class="upload-state waiting">
+              WAITING
+            </div>
+
+            <button class="retry-btn hidden">RETRY</button>
+
+          </div>
+
+          <!-- FACEBOOK -->
+          <div class="upload-row" data-upload-platform="facebook">
+
+            <div class="upload-platform">
+              <div class="platform-icon facebook">f</div>
+              <div>
+                <strong>Facebook</strong>
+                <small>Waiting</small>
+              </div>
+            </div>
+
+            <div class="progress-area">
+              <div class="progress-top">
+                <span class="upload-percent">0%</span>
+                <span class="upload-speed">—</span>
+              </div>
+
+              <div class="progress-track">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+
+            <div class="upload-state waiting">
+              WAITING
+            </div>
+
+            <button class="retry-btn hidden">RETRY</button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+
+      <div class="section-head">
+        <div>
+          <div class="section-label">04 / POSTX</div>
+          <h2>Everything In One Place</h2>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+
+        <div class="feature-card">
+          <span class="feature-number">01</span>
+          <div class="feature-icon">⚡</div>
+          <h3>Fast</h3>
+          <p>
+            Prepare one video instead of repeating the same work
+            platform by platform.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-number">02</span>
+          <div class="feature-icon">🔒</div>
+          <h3>Secure</h3>
+          <p>
+            Social accounts are connected through official
+            authorization instead of sharing passwords.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-number">03</span>
+          <div class="feature-icon">☁</div>
+          <h3>Persistent</h3>
+          <p>
+            Upload jobs can remain visible even after refreshing
+            the dashboard.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-number">04</span>
+          <div class="feature-icon">↻</div>
+          <h3>Retry</h3>
+          <p>
+            If one platform fails, retry that platform without
+            unnecessarily repeating successful uploads.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>
+        <strong>POSTX</strong>
+        <span>CREATE ONCE • POST EVERYWHERE</span>
+      </div>
+
+      <span>V2.3 • CREATOR CONTROL CENTER</span>
+    </footer>
+
+  </div>
+
+  <!-- SETTINGS PANEL -->
+  <div id="settingsPanel" class="modal hidden">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-card">
+
+      <div class="modal-head">
+        <div>
+          <small>POSTX</small>
+          <h2>Settings</h2>
+        </div>
+
+        <button class="close-btn" id="closeSettings">
+          ×
+        </button>
+      </div>
+
+      <div class="settings-list">
+
+        <div class="setting-item">
+          <div>
+            <strong>Account</strong>
+            <small>Manage your POSTX account</small>
+          </div>
+
+          <button class="outline-btn" id="accountBtn">
+            ACCOUNT
+          </button>
+        </div>
+
+        <div class="setting-item">
+          <div>
+            <strong>Connected Platforms</strong>
+            <small>Connect or disconnect social accounts</small>
+          </div>
+
+          <button class="outline-btn" id="connectionsBtn">
+            MANAGE
+          </button>
+        </div>
+
+        <div class="setting-item">
+          <div>
+            <strong>Auto Save</strong>
+            <small>Save draft information automatically</small>
+          </div>
+
+          <label class="switch">
+            <input type="checkbox" id="autoSave" checked>
+            <span></span>
+          </label>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div id="authPanel" class="modal hidden">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-card auth-card">
+
+      <div class="modal-head">
+        <div>
+          <small>WELCOME TO</small>
+          <h2>POSTX</h2>
+        </div>
+
+        <button class="close-btn" id="closeAuth">
+          ×
+        </button>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-auth="login">
+          LOGIN
+        </button>
+
+        <button class="auth-tab" data-auth="signup">
+          SIGN UP
+        </button>
+      </div>
+
+      <form id="authForm">
+
+        <label>
+          Email
+          <input
+            type="email"
+            id="authEmail"
+            placeholder="you@example.com"
+            required
+          >
+        </label>
+
+        <label>
+          Password
+          <input
+            type="password"
+            id="authPassword"
+            placeholder="••••••••"
+            required
+          >
+        </label>
+
+        <button type="submit" class="post-btn auth-submit">
+          CONTINUE →
+        </button>
+
+      </form>
+
+      <p class="auth-note">
+        Social accounts will be connected through official
+        authorization.
+      </p>
+
+    </div>
+
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+
+</body>
+    </html>
